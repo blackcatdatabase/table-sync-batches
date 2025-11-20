@@ -1,0 +1,6 @@
+-- Auto-generated from schema-map-postgres.psd1 (map@9d3471b)
+-- engine: postgres
+-- table:  sync_batches
+CREATE INDEX IF NOT EXISTS idx_sync_batches_status ON sync_batches (status);
+
+CREATE INDEX IF NOT EXISTS idx_sync_batches_created ON sync_batches (created_at);
