@@ -43,7 +43,7 @@ final class SyncBatcheRepository implements RepoContract, KeysetRepoContract
 
     // --- INSERT / BULK -------------------------------------------------------
 
-    public function insert(array #[\SensitiveParameter] $row): void {
+    public function insert(#[\SensitiveParameter] array $row): void {
         $row = $this->filterCols($this->normalizeInputRow($row));
         if (!$row) return;
 
@@ -107,13 +107,13 @@ final class SyncBatcheRepository implements RepoContract, KeysetRepoContract
     }
 
     /** Standard upsert – preserves soft-delete (no revive). */
-    public function upsert(array #[\SensitiveParameter] $row): void
+    public function upsert(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, false);
     }
 
     /** Upsert that revives soft-delete (sets deleted_at = NULL on conflict). */
-    public function upsertRevive(array #[\SensitiveParameter] $row): void
+    public function upsertRevive(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, true);
     }
@@ -216,7 +216,7 @@ final class SyncBatcheRepository implements RepoContract, KeysetRepoContract
 
     // --- UPDATE / DELETE / RESTORE ------------------------------------------
 
-    public function updateById(int|string|array $id, array #[\SensitiveParameter] $row): int {
+    public function updateById(int|string|array $id, #[\SensitiveParameter] array $row): int {
         $row = $this->normalizeInputRow($row);
 
         $tbl   = Ident::qi($this->db, Definitions::table());
@@ -428,7 +428,7 @@ final class SyncBatcheRepository implements RepoContract, KeysetRepoContract
         $sql = "SELECT * FROM {$tbl} WHERE {$where}";
         if ($guard !== '1=1') { $sql .= ' AND ' . $guard; }
 
-        $dialect = $this->db->getDialect(); // 'postgres' | 'mysql' | 'mariadb' ...
+        $dialect = $this->db->dialect(); // 'postgres' | 'mysql' | 'mariadb' ...
         $for = 'FOR UPDATE';
         if ($strength === 'share') {
             if ($dialect === 'postgres' || $dialect === 'mysql') { $for = 'FOR SHARE'; }
@@ -473,20 +473,4 @@ final class SyncBatcheRepository implements RepoContract, KeysetRepoContract
 
     // === Generated unique helpers (per table UNIQUE/PK) ===
     
-    /** @return array<string,mixed>|\BlackCat\Database\Packages\SyncBatches\Dto\SyncBatcheDto|null */
-    public function getById(int $id, bool $asDto = false): array|\BlackCat\Database\Packages\SyncBatches\Dto\SyncBatcheDto|null {
-        $row = $this->getByUnique([ 'id' => $id ]);
-        if (!$asDto || !$row) return $row;
-        return \BlackCat\Database\Packages\SyncBatches\Mapper\SyncBatcheDtoMapper::fromRow($row);
-    }
-    public function existsById(int $id): bool {
-        $where = 't.' . Ident::q($this->db, 'id') . ' = :uniq_id';
-        return $this->exists($where, [ 'uniq_id' => $id ]);
-    }
-    /** @return int|string|null */
-    public function getIdById(int $id) {
-        $row = $this->getById($id);
-        return $row ? ($row['id'] ?? null) : null;
-    }
-
 }
