@@ -1,4 +1,4 @@
--- Auto-generated from joins-postgres.psd1 (map@mtime:2025-11-27T17:17:38Z)
+-- Auto-generated from joins-postgres.yaml (map@94ebe6c)
 -- engine: postgres
 -- view:   sync_batches_progress
 

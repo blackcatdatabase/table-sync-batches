@@ -1,6 +1,7 @@
--- Auto-generated from feature-modules-mysql.psd1 (map@mtime:2025-11-27T17:06:04Z)
+-- Auto-generated from feature-modules-mysql.yaml (map@94ebe6c)
 -- engine: mysql
 -- table:  sync_batches_channels_health
+
 -- Sync channel health: last batch, success rate
 CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_sync_batches_channels_health AS
 WITH batches AS (

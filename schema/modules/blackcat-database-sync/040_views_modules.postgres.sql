@@ -1,14 +1,15 @@
--- Auto-generated from feature-modules-postgres.psd1 (map@mtime:2025-11-27T14:08:26Z)
+-- Auto-generated from feature-modules-postgres.yaml (map@94ebe6c)
 -- engine: postgres
 -- table:  sync_batches_channels_health
+
 -- Sync channel health: last batch, success rate
 CREATE OR REPLACE VIEW vw_sync_batches_channels_health AS
 WITH batches AS (
   SELECT
     channel,
     COUNT(*) AS batches_total,
-    COUNT(*) FILTER (WHERE status = ''success'') AS batches_success,
-    COUNT(*) FILTER (WHERE status = ''failed'')  AS batches_failed,
+    COUNT(*) FILTER (WHERE status = $$success$$) AS batches_success,
+    COUNT(*) FILTER (WHERE status = $$failed$$)  AS batches_failed,
     MAX(finished_at) AS last_finished_at
   FROM sync_batches
   GROUP BY channel
