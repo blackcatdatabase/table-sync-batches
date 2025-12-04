@@ -1,4 +1,4 @@
--- Auto-generated from joins-mysql.yaml (map@94ebe6c)
+-- Auto-generated from joins-mysql.yaml (map@85230ed)
 -- engine: mysql
 -- view:   sync_batch_progress
 
