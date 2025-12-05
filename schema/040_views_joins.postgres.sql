@@ -1,6 +1,6 @@
 -- Auto-generated from joins-postgres.yaml (map@85230ed)
 -- engine: postgres
--- view:   sync_batches_progress
+-- view:   sync_batch_progress
 
 -- Sync batch progress and success rate
 CREATE OR REPLACE VIEW vw_sync_batch_progress AS
