@@ -1,4 +1,4 @@
--- Auto-generated from feature-modules-postgres.yaml (map@85230ed)
+-- Auto-generated from feature-modules-postgres.yaml (map@sha1:A8D58997CBCD2EEE06670B1C02AD89FA65E66F67)
 -- engine: postgres
 -- table:  sync_batches_channels_health
 
