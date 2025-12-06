@@ -1,25 +1,7 @@
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
--- engine: postgres
--- table:  sync_batches_progress
--- Sync batch progress and success rate
-CREATE OR REPLACE VIEW vw_sync_batch_progress AS
-SELECT
-  b.id,
-  b.channel,
-  b.status,
-  b.items_total,
-  b.items_ok,
-  b.items_failed,
-  ROUND(100.0 * b.items_ok / GREATEST(b.items_total,1), 2) AS success_pct,
-  b.created_at,
-  b.started_at,
-  b.finished_at
-FROM sync_batches b
-ORDER BY b.created_at DESC;
-
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
+-- Auto-generated from schema-views-postgres.yaml (map@sha1:EDC13878AE5F346E7EAD2CF0A484FEB7E68F6CDD)
 -- engine: postgres
 -- table:  sync_batches
+
 -- Contract view for [sync_batches]
 CREATE OR REPLACE VIEW vw_sync_batches AS
 SELECT
@@ -35,4 +17,3 @@ SELECT
   started_at,
   finished_at
 FROM sync_batches;
-

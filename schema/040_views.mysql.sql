@@ -1,25 +1,7 @@
--- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
--- engine: mysql
--- table:  sync_batches_progress
--- Sync batch progress and success rate
-CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_sync_batch_progress AS
-SELECT
-  b.id,
-  b.channel,
-  b.status,
-  b.items_total,
-  b.items_ok,
-  b.items_failed,
-  ROUND(100.0 * b.items_ok / NULLIF(b.items_total, 0), 2) AS success_pct,
-  b.created_at,
-  b.started_at,
-  b.finished_at
-FROM sync_batches b
-ORDER BY b.created_at DESC;
-
--- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
+-- Auto-generated from schema-views-mysql.yaml (map@sha1:A4E10261DACB7519F6FEA44ED77A92163429CA5E)
 -- engine: mysql
 -- table:  sync_batches
+
 -- Contract view for [sync_batches]
 CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_sync_batches AS
 SELECT
@@ -35,4 +17,3 @@ SELECT
   started_at,
   finished_at
 FROM sync_batches;
-
