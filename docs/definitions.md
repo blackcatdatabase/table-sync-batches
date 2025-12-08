@@ -6,17 +6,17 @@ Batches of events replicated between peers.
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
 | consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | error | TEXT | YES |  | Batch-level error, if any. |
-| finished_at | TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |
+| finished_at | DATETIME(6) | YES |  | Processing completion timestamp. |
 | channel | VARCHAR(120) | NO |  | Logical replication channel. |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| items_failed | INTEGER | NO | 0 | Number of events that failed. |
-| items_ok |  | NO | 0 | Number of events applied successfully. |
-| items_total | INTEGER | NO | 0 | Total number of events in the batch. |
+| items_failed | INT | NO | 0 | Number of events that failed. |
+| items_ok | INT | NO | 0 | Number of events applied successfully. |
+| items_total | INT | NO | 0 | Total number of events in the batch. |
 | producer_peer_id | BIGINT | NO |  | Producing peer (FK peer_nodes.id). |
-| started_at |  | YES |  | Processing start timestamp. |
-| status | TEXT | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |
+| started_at | DATETIME(6) | YES |  | Processing start timestamp. |
+| status | ENUM('pending','sending','completed','failed','cancelled') | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |
 
 ## Engine Details
 
@@ -53,7 +53,7 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_sync_batch_progress | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\sync-batches\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/sync-batches/schema/040_views_joins.mysql.sql) |
-| vw_sync_batches | mysql | algorithm=MERGE, security=INVOKER | [packages\sync-batches\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/sync-batches/schema/040_views.mysql.sql) |
-| vw_sync_batch_progress | postgres |  | [packages\sync-batches\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/sync-batches/schema/040_views_joins.postgres.sql) |
-| vw_sync_batches | postgres |  | [packages\sync-batches\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/sync-batches/schema/040_views.postgres.sql) |
+| vw_sync_batch_progress | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_sync_batches | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_sync_batch_progress | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_sync_batches | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
