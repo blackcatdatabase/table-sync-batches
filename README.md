@@ -98,11 +98,11 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `created_at` – default=CURRENT_TIMESTAMP(6)
-- `items_failed` – default=0
-- `items_ok` – default=0
-- `items_total` – default=0
 - `status` – default=pending, enum
+- `items_total` – default=0
+- `items_ok` – default=0
+- `items_failed` – default=0
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
