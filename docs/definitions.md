@@ -5,11 +5,11 @@ Batches of events replicated between peers.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
+| channel | VARCHAR(120) | NO |  | Logical replication channel. |
 | consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |
 | created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | error | TEXT | YES |  | Batch-level error, if any. |
 | finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |
-| channel | VARCHAR(120) | NO |  | Logical replication channel. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | items_failed | mysql: INT / postgres: INTEGER | NO | 0 | Number of events that failed. |
 | items_ok | INT | NO | 0 | Number of events applied successfully. |
