@@ -17,7 +17,7 @@
 | What | Link | Notes |
 | --- | --- | --- |
 | Schema map | [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) | Source for table metadata |
-| Pkg folder | [packages\sync-batches](https://github.com/blackcatacademy/blackcat-database/blob/main/packages\sync-batches) | Repo location |
+| Pkg folder | [packages\sync-batches](https://github.com/blackcatacademy/blackcat-database/blob/main/packages/sync-batches) | Repo location |
 | Definitions | [docs/definitions.md](docs/definitions.md) | Column/index/FK docs |
 | Engine differences | [docs/definitions.md#engine-differences](docs/definitions.md#engine-differences) | Drift section in definitions |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) | Recent changes |
@@ -99,10 +99,10 @@ _No engine differences detected._
 
 ## Constraints Snapshot
 - `created_at` – default=CURRENT_TIMESTAMP(6)
-- `items_failed` – default=0
-- `items_ok` – default=0
 - `items_total` – default=0
 - `status` – default=pending, enum
+- `items_failed` – default=0
+- `items_ok` – default=0
 
 ## Schema Files
 | File | Engine |

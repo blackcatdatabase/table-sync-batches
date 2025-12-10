@@ -5,18 +5,18 @@ Batches of events replicated between peers.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |
 | created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| error | TEXT | YES |  | Batch-level error, if any. |
-| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |
-| channel | VARCHAR(120) | NO |  | Logical replication channel. |
 | id | BIGINT | NO |  | Surrogate primary key. |
+| channel | VARCHAR(120) | NO |  | Logical replication channel. |
+| started_at | DATETIME(6) | YES |  | Processing start timestamp. |
+| items_total | mysql: INT / postgres: INTEGER | NO | 0 | Total number of events in the batch. |
+| status | mysql: ENUM('pending','sending','completed','failed','cancelled') / postgres: TEXT | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |
+| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |
+| error | TEXT | YES |  | Batch-level error, if any. |
+| producer_peer_id | BIGINT | NO |  | Producing peer (FK peer_nodes.id). |
+| consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |
 | items_failed | mysql: INT / postgres: INTEGER | NO | 0 | Number of events that failed. |
 | items_ok | INT | NO | 0 | Number of events applied successfully. |
-| items_total | mysql: INT / postgres: INTEGER | NO | 0 | Total number of events in the batch. |
-| producer_peer_id | BIGINT | NO |  | Producing peer (FK peer_nodes.id). |
-| started_at | DATETIME(6) | YES |  | Processing start timestamp. |
-| status | mysql: ENUM('pending','sending','completed','failed','cancelled') / postgres: TEXT | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |
 
 ## Engine Details
 
