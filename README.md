@@ -1,6 +1,6 @@
 # 📦 Sync Batches
 
-> Auto-generated from [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) (map@sha1:5221bb5c65d0fbe010594635f9efb6fc13c307b2). Do not edit manually.
+> Auto-generated from [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) (map@sha1:b652427bb7925a0767501463b726cc7a44fd195c). Do not edit manually.
 > Targets: PHP 8.3; MySQL 8.x / MariaDB 10.4; Postgres 15+.
 
 ![PHP](https://img.shields.io/badge/PHP-8.3-blueviolet) ![DB](https://img.shields.io/badge/DB-MySQL%20%7C%20MariaDB%20%7C%20Postgres-informational) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-success)
@@ -11,13 +11,13 @@
 
 > **Schema snapshot**
 > Map: [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) · Docs: [docs/definitions.md](docs/definitions.md) · Drift warnings: 0
-> Lineage: 1 outbound / 1 inbound · ✅ No engine drift detected · Index coverage: ready · PII flags: 1 · Changelog: fresh (0 d)
+> Lineage: 1 outbound / 1 inbound · ✅ No engine drift detected · Index coverage: ready · PII flags: 1 · Changelog: fresh
 
 ## Quick Links
 | What | Link | Notes |
 | --- | --- | --- |
 | Schema map | [schema-map-postgres.yaml](https://github.com/blackcatacademy/blackcat-database/blob/main/scripts/schema/schema-map-postgres.yaml) | Source for table metadata |
-| Pkg folder | [packages\sync-batches](https://github.com/blackcatacademy/blackcat-database/blob/main/packages\sync-batches) | Repo location |
+| Pkg folder | [packages/sync-batches](https://github.com/blackcatacademy/blackcat-database/blob/main/packages/sync-batches) | Repo location |
 | Definitions | [docs/definitions.md](docs/definitions.md) | Column/index/FK docs |
 | Engine differences | [docs/definitions.md#engine-differences](docs/definitions.md#engine-differences) | Drift section in definitions |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) | Recent changes |
@@ -63,7 +63,7 @@
 | Seeds | **0** |
 | Docs | **present** |
 | Changelog | **present** |
-| Changelog freshness | fresh (0 days; threshold 45) |
+| Changelog freshness | fresh (threshold 45 d) |
 | Lineage | outbound **1** / inbound **1** |
 | Index coverage | **ready** |
 | Engine targets | PHP 8.3; MySQL/MariaDB/Postgres |
@@ -98,11 +98,11 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `created_at` – default=CURRENT_TIMESTAMP(6)
-- `items_failed` – default=0
-- `items_ok` – default=0
-- `items_total` – default=0
 - `status` – default=pending, enum
+- `items_total` – default=0
+- `items_ok` – default=0
+- `items_failed` – default=0
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
