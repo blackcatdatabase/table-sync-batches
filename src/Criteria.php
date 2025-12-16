@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'channel', 'error' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'channel', 'producer_peer_id', 'consumer_peer_id', 'status', 'items_total', 'items_ok', 'items_failed', 'error', 'created_at', 'started_at', 'finished_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'channel', 'producer_peer_id', 'consumer_peer_id', 'status', 'items_total', 'items_ok', 'items_failed', 'error', 'created_at', 'started_at', 'finished_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
