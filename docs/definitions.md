@@ -3,20 +3,20 @@
 Batches of events replicated between peers.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| id | BIGINT | NO |  | Surrogate primary key. |
-| channel | VARCHAR(120) | NO |  | Logical replication channel. |
-| producer_peer_id | BIGINT | NO |  | Producing peer (FK peer_nodes.id). |
-| consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |
-| status | mysql: ENUM('pending','sending','completed','failed','cancelled') / postgres: TEXT | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |
-| items_total | mysql: INT / postgres: INTEGER | NO | 0 | Total number of events in the batch. |
-| items_ok | INT | NO | 0 | Number of events applied successfully. |
-| items_failed | mysql: INT / postgres: INTEGER | NO | 0 | Number of events that failed. |
-| error | TEXT | YES |  | Batch-level error, if any. |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| started_at | DATETIME(6) | YES |  | Processing start timestamp. |
-| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| id | BIGINT | NO |  | Surrogate primary key. |  |
+| channel | VARCHAR(120) | NO |  | Logical replication channel. |  |
+| producer_peer_id | BIGINT | NO |  | Producing peer (FK peer_nodes.id). |  |
+| consumer_peer_id | BIGINT | NO |  | Consuming peer (FK peer_nodes.id). |  |
+| status | mysql: ENUM('pending','sending','completed','failed','cancelled') / postgres: TEXT | NO | pending | Batch status. (enum: pending, sending, completed, failed, cancelled) |  |
+| items_total | mysql: INT / postgres: INTEGER | NO | 0 | Total number of events in the batch. |  |
+| items_ok | mysql: INT | NO | 0 | Number of events applied successfully. |  |
+| items_failed | mysql: INT / postgres: INTEGER | NO | 0 | Number of events that failed. |  |
+| error | TEXT | YES |  | Batch-level error, if any. |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
+| started_at | mysql: DATETIME(6) | YES |  | Processing start timestamp. |  |
+| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Processing completion timestamp. |  |
 
 ## Engine Details
 
