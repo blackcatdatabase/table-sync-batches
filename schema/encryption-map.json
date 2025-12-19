@@ -2,6 +2,9 @@
   "tables": {
     "sync_batches": {
       "columns": {
+        "channel": {
+          "strategy": "passthrough"
+        },
         "consumer_peer_id": {
           "strategy": "passthrough"
         },
@@ -12,9 +15,6 @@
           "strategy": "passthrough"
         },
         "finished_at": {
-          "strategy": "passthrough"
-        },
-        "channel": {
           "strategy": "passthrough"
         },
         "id": {
