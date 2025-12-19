@@ -1,0 +1,44 @@
+{
+  "tables": {
+    "sync_batches": {
+      "columns": {
+        "channel": {
+          "strategy": "passthrough"
+        },
+        "consumer_peer_id": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "error": {
+          "strategy": "passthrough"
+        },
+        "finished_at": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "items_failed": {
+          "strategy": "passthrough"
+        },
+        "items_ok": {
+          "strategy": "passthrough"
+        },
+        "items_total": {
+          "strategy": "passthrough"
+        },
+        "producer_peer_id": {
+          "strategy": "passthrough"
+        },
+        "started_at": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
